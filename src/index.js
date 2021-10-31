@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { unstable_concurrentAct } from 'react-dom/test-utils';
 import './index.css';
 
 function Square(props) {
@@ -23,7 +22,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="board-rows">
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -87,12 +86,14 @@ class Game extends React.Component {
 
     const moves = history.map((step,move) => {
       const desc = move ?
-      'Go to move #' + move :
-      'Go to game start';
+      'Move #' + move :
+      'Start';
+      const buttonClass = desc.slice(0, 5).toLowerCase().trim() + 'button'; // make a class for the buttons
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+          <li key={move}>
+            <button class={buttonClass}
+           onClick={() => this.jumpTo(move)}>{desc}</button>
+          </li>
       );
     });
 
@@ -105,6 +106,8 @@ class Game extends React.Component {
 
     return (
       <div className="game">
+        <h1>ticTacToe</h1>
+        <div className="game-status"><h2>{status}</h2></div>
         <div className="game-board">
           <Board 
             squares={current.squares}
@@ -112,8 +115,8 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
+          <h2>Go to:</h2>
+          <ul>{moves}</ul>
         </div>
       </div>
     );
