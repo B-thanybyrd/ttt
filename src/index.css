@@ -10,7 +10,8 @@ body {
   height: 100vh;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 30px;
 }
 
@@ -80,7 +81,7 @@ h2.win {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items:center;
+  align-items: center;
   flex-grow: 1;
   height: 100%;
   width: 100%;
@@ -95,11 +96,11 @@ h2.win {
   align-items: center;
   height: 100%;
   width: 30%;
-  font-size:6vw;
+  font-size: 6vw;
   line-height: 8vw;
 }
 
- .square:before {
+.square:before {
   content: '';
   display: table;
   padding-top: 100%;
@@ -112,8 +113,6 @@ h2.win {
 .kbd-navigation .square:focus {
   background: #ddd;
 }
-
-
 
 .game-info ul {
   list-style-type: none;
@@ -162,4 +161,3 @@ h2.win {
   background-color: #000;
   color: #FFF;
 }
-
