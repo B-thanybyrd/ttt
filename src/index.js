@@ -90,24 +90,28 @@ class Game extends React.Component {
       'Start';
       const buttonClass = desc.slice(0, 5).toLowerCase().trim() + 'button'; // make a class for the buttons
       return (
-          <li key={move}>
-            <button class={buttonClass}
-           onClick={() => this.jumpTo(move)}>{desc}</button>
+          <li key={move} className={buttonClass}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
           </li>
       );
     });
 
     let status;
+    let win;
     if (winner) {
       status = 'Winner: ' + winner;
+      win = 'win';
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      win = 'playing';
     }
 
     return (
       <div className="game">
-        <h1>ticTacToe</h1>
-        <div className="game-status"><h2>{status}</h2></div>
+        <div className="game-status">
+          <h1>ticTacToe</h1>
+          <h2 className={win}>{status}</h2></div>
+        <div className="game-play">  
         <div className="game-board">
           <Board 
             squares={current.squares}
@@ -117,6 +121,7 @@ class Game extends React.Component {
         <div className="game-info">
           <h2>Go to:</h2>
           <ul>{moves}</ul>
+        </div>
         </div>
       </div>
     );
